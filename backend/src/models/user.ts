@@ -1,4 +1,8 @@
-class User {
+import { UserInferType } from "../db/schemas/usersSchema"
+import { Role } from "./role"
+
+class User implements UserInferType{
+  id: number
   firstName: string
   lastName: string
   email: string
@@ -19,3 +23,5 @@ class User {
     this.role = role
   }
 }
+
+export { User }

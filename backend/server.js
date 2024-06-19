@@ -3,6 +3,8 @@ import cors from 'cors'
 import records from './routes/record.js'
 import errorHandler from './src/middlewares/errorHandler.js'
 
+require('dotenv').config()
+
 const PORT = process.env.PORT || 5050
 const app = express()
 
