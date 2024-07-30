@@ -1,25 +1,21 @@
-import { UserInferType } from '../db/schemas/UsersSchema'
-import { Role } from './Role'
-
-class User implements UserInferType {
-  id: number
+class User {
+  id: string
   firstName: string
   lastName: string
   email: string
-  password: string
-  role: Role
+  role: string
 
   constructor(
+    id: string,
     firstName: string,
     lastName: string,
     email: string,
-    password: string,
-    role: Role = Role.USER
+    role: string
   ) {
+    this.id = id
     this.firstName = firstName
     this.lastName = lastName
     this.email = email
-    this.password = password
     this.role = role
   }
 }

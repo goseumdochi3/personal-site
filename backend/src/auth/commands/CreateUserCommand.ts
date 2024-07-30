@@ -1,11 +1,11 @@
-import { ICommand } from "../../commandInterfaces/ICommand"
+import { ICommand } from '../../cqrsInterfaces/ICommand'
 
 export class CreateUserCommand implements ICommand {
-    constructor(
-        public readonly firstName: string,
-        public readonly lastName: string,
-        public readonly email: string,
-        public readonly password: string,
-        public readonly role: string
-    ) {}
+  constructor(
+    public readonly firstName: string,
+    public readonly lastName: string,
+    public readonly email: string,
+    public readonly password: string,
+    public readonly role: string
+  ) {}
 }
