@@ -1,7 +1,7 @@
 # Getting Started
 
 1. Run `npm install`
-2. Create local .env.local file
+2. Create local .env.local file following .env.example
 3. Run `npm start`
 
 To run migrations:
