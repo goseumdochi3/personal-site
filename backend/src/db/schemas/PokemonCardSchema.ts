@@ -1,22 +1,28 @@
-import { integer, pgTable, serial, varchar } from 'drizzle-orm/pg-core'
+import { pgTable, primaryKey, uuid, varchar } from 'drizzle-orm/pg-core'
 
 import { pgEnum } from 'drizzle-orm/pg-core'
-import { enumValuesToArray } from '../utils/DrizzleUtils'
-import { ExpansionSet } from '../../models/ExpansionSet'
+import { allPokemonCardSets } from '../../models/PokemonCardSets'
 
-const ExpansionSetEnumSchema = pgEnum(
-  'expansion_set',
-  enumValuesToArray(ExpansionSet)
+const PokemonCardSetEnumSchema = pgEnum('card_set', allPokemonCardSets)
+
+const PokemonCardsSchema = pgTable(
+  'pokemon_cards',
+  {
+    uuid: uuid('uuid').notNull(),
+    cardName: varchar('card_name', { length: 128 }).notNull(),
+    cardNumber: varchar('card_number', { length: 8 }).default('').notNull(),
+    cardSet: PokemonCardSetEnumSchema('card_set').notNull(),
+    imageLink: varchar('image_link', { length: 1024 }),
+  },
+  (table) => {
+    return {
+      pk: primaryKey({
+        columns: [table.cardName, table.cardNumber, table.cardSet],
+      }),
+    }
+  }
 )
-
-const PokemonCardsSchema = pgTable('pokemon_cards', {
-  id: serial('id').primaryKey(),
-  cardName: varchar('card_name', { length: 256 }).notNull(),
-  imageLink: varchar('image_link', { length: 1024 }).notNull(),
-  expansionSet: ExpansionSetEnumSchema('expansion_set').notNull(),
-  cardNumber: integer('card_number').notNull(),
-})
 
 type PokemonCardInferType = typeof PokemonCardsSchema.$inferSelect
 
-export { PokemonCardsSchema, PokemonCardInferType, ExpansionSetEnumSchema }
+export { PokemonCardsSchema, PokemonCardInferType, PokemonCardSetEnumSchema }

@@ -1,5 +1,5 @@
 DO $$ BEGIN
- CREATE TYPE "public"."expansion_set" AS ENUM('Shrouded Fables', 'Twilight Masquerade', 'Temporal Forces', 'Paldaen Fates', 'Paradox Rift', 'Scarlet & Violet - 151', 'Trick or Trade 2023', 'Holiday Calendar 2023', 'McDonalds 2023', 'Obsidian Flames', 'Paldea Evolved', 'Scarlet & Violet');
+ CREATE TYPE "public"."expansion_set" AS ENUM('Shrouded Fables', 'Twilight Masquerade', 'Temporal Forces', 'Paldaen Fates', 'Paradox Rift', 'Scarlet & Violet 151', 'Trick or Trade 2023', 'Holiday Calendar 2023', 'McDonalds 2023', 'Obsidian Flames', 'Paldea Evolved', 'Scarlet & Violet');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

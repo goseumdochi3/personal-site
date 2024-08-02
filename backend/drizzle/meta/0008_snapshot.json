@@ -1,0 +1,207 @@
+{
+  "id": "8300af22-2f57-47d4-9c0e-ebae7a171c91",
+  "prevId": "7df50d63-ceef-4046-b51f-7e008605c3d5",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.pokemon_cards": {
+      "name": "pokemon_cards",
+      "schema": "",
+      "columns": {
+        "uuid": {
+          "name": "uuid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "card_name": {
+          "name": "card_name",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "card_number": {
+          "name": "card_number",
+          "type": "varchar(8)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "card_set": {
+          "name": "card_set",
+          "type": "card_set",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_link": {
+          "name": "image_link",
+          "type": "varchar(1024)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "pokemon_cards_card_name_card_number_card_set_pk": {
+          "name": "pokemon_cards_card_name_card_number_card_set_pk",
+          "columns": [
+            "card_name",
+            "card_number",
+            "card_set"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.sold_items": {
+      "name": "sold_items",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "link": {
+          "name": "link",
+          "type": "varchar(1024)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sold_date": {
+          "name": "sold_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "price": {
+          "name": "price",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "item_type_uuid": {
+          "name": "item_type_uuid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.card_set": {
+      "name": "card_set",
+      "schema": "public",
+      "values": [
+        "Shrouded Fables",
+        "Twilight Masquerade",
+        "Temporal Forces",
+        "Paldaen Fates",
+        "Paradox Rift",
+        "Scarlet Violet 151",
+        "McDonalds 2023",
+        "Obsidian Flames",
+        "Paldea Evolved",
+        "Scarlet Violet",
+        "Scarlet Violet English Promos",
+        "Crown Zenith",
+        "Crown Zenith Galarian Gallery",
+        "Silver Tempest",
+        "Silver Tempest Trainer Gallery",
+        "Lost Origin",
+        "Lost Origin Trainer Gallery",
+        "Holiday Calendar 2022",
+        "McDonalds Match Battle",
+        "English Pokemon Go",
+        "Astral Radiance",
+        "Astral Radiance Trainer Gallery",
+        "Brilliant Stars",
+        "Brilliant Stars Trainer Gallery",
+        "Fusion Strike",
+        "Celebrations",
+        "Evolving Skies",
+        "Chilling Reign",
+        "Battle Styles",
+        "Shining Fates",
+        "McDonalds 25th Anniversary",
+        "Vivid Voltage",
+        "Champions Path",
+        "Pokemon Futsal Promos",
+        "Darkness Ablaze",
+        "Rebel Clash",
+        "English Sword Shield",
+        "English Sword Shield Promos",
+        "Trick or Trade 2023",
+        "Trick or Trade",
+        "Holiday Calendar 2023",
+        "Holiday Calendar 2022"
+      ]
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

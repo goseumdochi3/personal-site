@@ -1,23 +1,25 @@
 import { PokemonCardInferType } from '../db/schemas/PokemonCardSchema'
-import { ExpansionSet } from './ExpansionSet'
+import { PokemonCardSet } from './PokemonCardSets'
+import { v4 as uuid } from 'uuid'
 
 class PokemonCard implements PokemonCardInferType {
-  id: number
-  cardNumber: number
+  uuid: string
+  cardNumber: string
   cardName: string
-  imageLink: string
-  expansionSet: ExpansionSet
+  cardSet: PokemonCardSet
+  imageLink: string | null
 
   constructor(
-    cardNumber: number,
+    cardNumber: string,
     cardName: string,
-    imageLink: string,
-    expansionSet: ExpansionSet
+    cardSet: PokemonCardSet,
+    imageLink: string | null
   ) {
+    this.uuid = uuid()
     this.cardNumber = cardNumber
     this.cardName = cardName
+    this.cardSet = cardSet
     this.imageLink = imageLink
-    this.expansionSet = expansionSet
   }
 }
 

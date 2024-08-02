@@ -1,0 +1,1 @@
+ALTER TABLE "pokemon_cards" ALTER COLUMN "card_number" SET DATA TYPE varchar(16);
