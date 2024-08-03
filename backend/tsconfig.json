@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+    "target": "es2022",
+    "module": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "outDir": "build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "resolveJsonModule": true,
+    "importHelpers": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", ".env"]
+}
