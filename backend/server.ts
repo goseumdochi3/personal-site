@@ -3,7 +3,6 @@ import './config.ts'
 import express from 'express'
 import cors from 'cors'
 import { ErrorHandler } from './src/middlewares/errorHandler'
-import { backfillAllPokemonCards } from './src/backfill-pokemon-cards/services/BackfillPokemonService'
 
 const PORT = process.env.PORT || 5050
 const app = express()
@@ -23,5 +22,3 @@ app.use(ErrorHandler)
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
 })
-
-backfillAllPokemonCards()
