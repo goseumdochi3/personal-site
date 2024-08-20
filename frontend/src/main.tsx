@@ -1,14 +1,17 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App'
-import Record from './components/Record'
+import HomePage from './App'
+import PokemonQueryClientProvider from './clients/PokemonQueryClientProvider'
+import PokemonCardPage from './components/PokemonCardPage'
+import SearchPage from './components/SearchPage'
 import UserList from './components/UserList'
+import './styles.css'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <HomePage />,
     children: [
       {
         path: '/',
@@ -17,22 +20,22 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/edit/:id',
-    element: <App />,
+    path: '/pokemon-cards/:expansion/:cardNumber',
+    element: <HomePage />,
     children: [
       {
-        path: '/edit/:id',
-        element: <Record />,
+        path: '/pokemon-cards/:expansion/:cardNumber',
+        element: <PokemonCardPage />,
       },
     ],
   },
   {
-    path: '/create',
-    element: <App />,
+    path: '/pokemon-cards',
+    element: <HomePage />,
     children: [
       {
-        path: '/create',
-        element: <Record />,
+        path: '/pokemon-cards',
+        element: <SearchPage />,
       },
     ],
   },
@@ -40,6 +43,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <PokemonQueryClientProvider>
+      <RouterProvider router={router} />
+    </PokemonQueryClientProvider>
   </React.StrictMode>
 )
